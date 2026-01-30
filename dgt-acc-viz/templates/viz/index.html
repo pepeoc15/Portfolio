@@ -1,0 +1,190 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <title>DGT Accident Viz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'viz/styles.css' %}">
+
+</head>
+
+<body>
+  <div class="container-fluid py-3">
+
+    <h1 class="mb-3 page-wrapper">DGT Accident Visualizer</h1>
+
+    <div class="page-wrapper">
+      <div class="card shadow-sm mb-3">
+        <div class="card-body">
+          <form method="get" class="row g-3 align-items-end">
+            <div class="col-12 col-md-2">
+              <label class="form-label">Nivel</label>
+              {{ form.level }}
+            </div>
+
+            <div id="municipio-filters" class="col-12 d-none">
+              <div class="row g-3">
+                <div class="col-12 col-md-2">
+                  <label class="form-label" for="id_ccaa">CCAA</label>
+                  {{ form.ccaa }}
+                </div>
+
+                <div class="col-12 col-md-3">
+                  <label class="form-label" for="id_provincia">Provincia</label>
+                  {{ form.provincia }}
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-12 col-md-3">
+              <label class="form-label">Métrica</label>
+              {{ form.metric }}
+            </div>
+
+            <div class="col-6 col-md-1">
+              <label class="form-label">Año</label>
+              {{ form.anyo }}
+            </div>
+
+            <div class="col-6 col-md-1">
+              <label class="form-label">Acumulado</label>
+              <div class="form-check">
+                {{ form.acumulado }}
+              </div>
+            </div>
+
+            <div class="col-12 col-md-2">
+              <label class="form-label">Tipo vía</label>
+              {{ form.tipo_via }}
+            </div>
+
+            <div class="col-12 col-md-2">
+              <label class="form-label">Tipo accidente</label>
+              {{ form.tipo_accidente }}
+            </div>
+
+            <div class="col-12 col-md-1 d-grid">
+              <button class="btn btn-dark" type="submit">Actualizar</button>
+            </div>
+          </form>
+
+          <div class="text-muted small mt-2">
+            Consejo: usa “Acumulado” para ver el total sin filtrar por año.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-wrapper">
+      {% if validation_error %}
+      <div class="alert alert-warning mt-2">
+        {{ validation_error }}
+      </div>
+      {% endif %}
+
+      <div class="card shadow-sm">
+        <div class="card-body p-0">
+          <div class="map-wrap">
+            {{ map_html|safe }}
+          </div>
+        </div>
+      </div>
+      {% if top10 %}
+      <div class="card" style="margin-top:16px;">
+        <h3 style="margin:0 0 8px 0;">Top 10 ({{ level }}) — {{ metric }}</h3>
+        <ol style="margin:0; padding-left: 18px;">
+          {% for r in top10 %}
+          <li><strong>{{ r.label }}</strong> — {{ r.value|floatformat:0 }}</li>
+          {% endfor %}
+        </ol>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  <script>
+    const chk = document.getElementById("id_acumulado");
+    const year = document.getElementById("id_anyo");
+    function sync() {
+      if (!chk || !year) return;
+      year.disabled = chk.checked;
+      year.style.opacity = chk.checked ? 0.6 : 1;
+    }
+    if (chk) { chk.addEventListener("change", sync); }
+    sync();
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.querySelector("form");
+      if (!form) return;
+
+      form.addEventListener("submit", (e) => {
+        const level = document.getElementById("id_level");
+        if (!level || level.value !== "municipio") return;
+
+        const ccaa = document.getElementById("id_ccaa");
+        const prov = document.getElementById("id_provincia");
+
+        const ccaaVal = ccaa ? ccaa.value : "__all__";
+        const provVal = prov ? prov.value : "__all__";
+
+        if (ccaaVal === "__all__" && provVal === "__all__") {
+          e.preventDefault();
+          alert("Para ver Municipios, selecciona una CCAA o una Provincia.");
+        }
+      });
+    });
+
+
+    // Al cargar la página
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.querySelector("form");
+      const level = document.getElementById("id_level");
+      const block = document.getElementById("municipio-filters");
+      const ccaa = document.getElementById("id_ccaa");
+      const prov = document.getElementById("id_provincia");
+
+      // Mostrar/ocultar filtros de municipio según nivel
+      function toggleMunicipioFilters() {
+        if (!level || !block) return;
+        if (level.value === "municipio") {
+          block.classList.remove("d-none");
+        } else {
+          block.classList.add("d-none");
+          // opcional: resetear selects al salir de municipio
+          if (ccaa) ccaa.value = "__all__";
+          if (prov) prov.value = "__all__";
+        }
+      }
+
+      toggleMunicipioFilters();
+      // Escuchar cambios en el select de nivel
+      if (level) level.addEventListener("change", toggleMunicipioFilters);
+
+      // Validación antes de submit
+      // Ya existe una validación similar arriba, pero la dejamos aquí también
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          if (!level || level.value !== "municipio") return;
+
+          const ccaaVal = ccaa ? ccaa.value : "__all__";
+          const provVal = prov ? prov.value : "__all__";
+
+          // si ambos son "all", evitar submit
+          if (ccaaVal === "__all__" && provVal === "__all__") {
+            e.preventDefault();
+            alert("Para ver Municipios, selecciona una CCAA o una Provincia.");
+          }
+          // si ambos son específicos, forzar ccaa a "all" y enviar solo provincia
+          if (ccaaVal !== "__all__" && provVal !== "__all__") {
+            if (ccaa) ccaa.value = "__all__";
+          }
+
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

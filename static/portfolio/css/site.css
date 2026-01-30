@@ -1,0 +1,73 @@
+:root{
+  --radius: 1.25rem;
+  /* Acento (no “bootstrap blue”) */
+  --brand: 99, 179, 237;       /* rgb suave (azul/iris) */
+  --brand-2: 126, 231, 193;    /* rgb suave (menta) */
+}
+
+/* Dark: mejor contraste y menos “chillón” */
+html[data-bs-theme="dark"]{
+  --bs-body-bg: #0b1220;
+  --bs-body-color: #e5e7eb;
+
+  --bs-primary: rgb(var(--brand));
+  --bs-primary-rgb: var(--brand);
+
+  --bs-link-color: rgb(var(--brand));
+  --bs-link-hover-color: rgba(var(--brand), .85);
+}
+
+/* Light: limpio y serio */
+html[data-bs-theme="light"]{
+  --bs-body-bg: #ffffff;
+  --bs-body-color: #111827;
+
+  --bs-primary: rgb(37, 99, 235); /* aquí puedes dejarlo más clásico si quieres */
+  --bs-primary-rgb: 37, 99, 235;
+}
+
+.nav-blur{
+  backdrop-filter: blur(10px);
+  background: rgba(10, 16, 28, .65);
+}
+
+html[data-bs-theme="light"] .nav-blur{
+  background: rgba(255,255,255,.75);
+}
+
+.hero-wrap{
+  padding: 2.5rem 0;
+}
+
+.rounded-4{
+  border-radius: var(--radius) !important;
+}
+
+.project-card{
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.project-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.35);
+}
+
+.badge-soft{
+  border: 1px solid rgba(0,0,0,.08);
+}
+
+.avatar{
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(13,110,253,.25), rgba(25,135,84,.25));
+  border: 1px solid rgba(0,0,0,.06);
+}
+
+/* Botones primarios: look más “producto”, menos bootstrap */
+.btn-primary{
+  border: 0;
+  box-shadow: 0 6px 20px rgba(var(--brand), .18);
+}
+.btn-primary:hover{
+  filter: brightness(.97);
+}

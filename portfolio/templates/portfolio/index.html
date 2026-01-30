@@ -1,0 +1,202 @@
+{% extends "portfolio/base.html" %}
+{% load static %}
+
+{% block title %}Pepe Osuna · Portfolio{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hero-wrap">
+  <div class="row align-items-center g-4">
+    <div class="col-12 col-lg-7">
+      <p class="text-uppercase small text-muted mb-2">Backend · Data · Django</p>
+      <h1 class="display-5 fw-bold lh-tight mb-3">
+        Construyo aplicaciones basadas en datos, con foco en claridad y rendimiento.
+      </h1>
+      <p class="lead text-muted mb-4">
+        Python/Django, SQL (Oracle), Java. Proyectos con datos reales, decisiones técnicas explicadas y despliegues reproducibles.
+      </p>
+
+      <div class="d-flex flex-wrap gap-2">
+        <a class="btn btn-primary px-4" href="#projects">Ver proyectos</a>
+        <a class="btn btn-outline-secondary px-4" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="btn btn-outline-secondary px-4" href="#" target="_blank" rel="noreferrer">CV (PDF)</a>
+      </div>
+
+      <div class="mt-4 d-flex flex-wrap gap-2">
+        <span class="badge text-bg-light badge-soft">Python</span>
+        <span class="badge text-bg-light badge-soft">Django</span>
+        <span class="badge text-bg-light badge-soft">SQL / Oracle</span>
+        <span class="badge text-bg-light badge-soft">Pandas</span>
+        <span class="badge text-bg-light badge-soft">Folium</span>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-5">
+      <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-body p-4">
+          <div class="d-flex align-items-center gap-3">
+            <div class="avatar"></div>
+            <div>
+              <div class="fw-semibold">Pepe Osuna</div>
+              <div class="text-muted small">Spain · Disponible para proyectos</div>
+            </div>
+          </div>
+          <hr class="my-4">
+          <div class="small text-muted">
+            En este portfolio verás proyectos “de verdad”: datasets oficiales, ETL, visualización y backend.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="mt-5 pt-3">
+  <div class="d-flex align-items-end justify-content-between gap-3 mb-3">
+    <div>
+      <h2 class="h3 fw-bold mb-1">Proyectos destacados</h2>
+      <p class="text-muted mb-0">Producto primero: demo, repo, y decisiones técnicas.</p>
+    </div>
+    <a class="btn btn-sm btn-outline-secondary" href="#" target="_blank" rel="noreferrer">Ver todos</a>
+  </div>
+
+  <div class="row g-4">
+
+    <!-- Proyecto 1 -->
+    <div class="col-12 col-lg-6">
+      <div class="card project-card h-100 border-0 shadow-sm rounded-4">
+        <div class="card-body p-4">
+          <div class="d-flex justify-content-between align-items-start gap-3">
+            <div>
+              <h3 class="h5 fw-semibold mb-1">DGT-ACC-VIZ</h3>
+              <p class="text-muted mb-3">
+                Visualización de microdatos de accidentes (DGT) con Django + Folium. Filtros, agregación por nivel y mapa interactivo.
+              </p>
+            </div>
+            <span class="badge text-bg-primary">Django</span>
+          </div>
+
+          <ul class="small text-muted mb-3">
+            <li>ETL (Excel→CSV), claves geográficas (join_key/NATCODE)</li>
+            <li>Mapa + tabla sincronizada (Folium + DataTables)</li>
+            <li>Enfoque “publicable” como showcase open-data</li>
+          </ul>
+
+          <div class="d-flex flex-wrap gap-2">
+            <a class="btn btn-sm btn-primary" href="#" target="_blank" rel="noreferrer">Demo</a>
+            <a class="btn btn-sm btn-outline-secondary" href="#" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn btn-sm btn-outline-secondary" href="#" target="_blank" rel="noreferrer">Detalles</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Proyecto 2 -->
+    <div class="col-12 col-lg-6">
+      <div class="card project-card h-100 border-0 shadow-sm rounded-4">
+        <div class="card-body p-4">
+          <div class="d-flex justify-content-between align-items-start gap-3">
+            <div>
+              <h3 class="h5 fw-semibold mb-1">Portfolio (Django)</h3>
+              <p class="text-muted mb-3">
+                Portfolio modular con secciones editables y despliegue listo (estático + datos en DB opcional).
+              </p>
+            </div>
+            <span class="badge text-bg-dark">Web</span>
+          </div>
+
+          <ul class="small text-muted mb-3">
+            <li>Plantilla limpia + estructura mantenible</li>
+            <li>Preparado para modelos: Projects/Skills/Experience</li>
+            <li>CI/CD y Docker opcional (fase siguiente)</li>
+          </ul>
+
+          <div class="d-flex flex-wrap gap-2">
+            <a class="btn btn-sm btn-primary" href="#" target="_blank" rel="noreferrer">Demo</a>
+            <a class="btn btn-sm btn-outline-secondary" href="#" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="mt-5 pt-3">
+  <h2 class="h3 fw-bold mb-3">Skills</h2>
+
+  <div class="row g-3">
+    <div class="col-12 col-md-6 col-lg-3">
+      <div class="card border-0 shadow-sm rounded-4 h-100">
+        <div class="card-body p-4">
+          <div class="fw-semibold mb-2">Backend</div>
+          <div class="text-muted small">Python · Django · Java</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-3">
+      <div class="card border-0 shadow-sm rounded-4 h-100">
+        <div class="card-body p-4">
+          <div class="fw-semibold mb-2">Data</div>
+          <div class="text-muted small">Pandas · EDA · Visualización</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-3">
+      <div class="card border-0 shadow-sm rounded-4 h-100">
+        <div class="card-body p-4">
+          <div class="fw-semibold mb-2">Bases de datos</div>
+          <div class="text-muted small">Oracle · SQL · Modelado</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-3">
+      <div class="card border-0 shadow-sm rounded-4 h-100">
+        <div class="card-body p-4">
+          <div class="fw-semibold mb-2">Dev</div>
+          <div class="text-muted small">Git · Linux · Deploy (en progreso)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="mt-5 pt-3">
+  <h2 class="h3 fw-bold mb-3">Experiencia</h2>
+
+  <div class="card border-0 shadow-sm rounded-4">
+    <div class="card-body p-4">
+      <div class="d-flex justify-content-between flex-wrap gap-2">
+        <div class="fw-semibold">Tu puesto / empresa</div>
+        <div class="text-muted small">2019 — Actualidad</div>
+      </div>
+      <p class="text-muted mb-0 mt-2">
+        Aquí luego pondrás 3–5 bullets de impacto (no tareas). Te ayudo a redactarlos cuando quieras.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="mt-5 pt-3">
+  <h2 class="h3 fw-bold mb-3">Contacto</h2>
+
+  <div class="card border-0 shadow-sm rounded-4">
+    <div class="card-body p-4">
+      <p class="text-muted mb-3">Escríbeme y te respondo rápido.</p>
+      <div class="d-flex flex-wrap gap-2">
+        <a class="btn btn-primary" href="mailto:tuemail@dominio.com">Email</a>
+        <a class="btn btn-outline-secondary" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

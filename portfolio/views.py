@@ -1,6 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
-def home(request):
-    return HttpResponse("Hola! Este será mi portfolio ??")
-
+def index(request):
+    return render(request, "portfolio/index.html")
