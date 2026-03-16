@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5" style="max-width: 420px;">
+    <h2 class="mb-4">Iniciar sesión</h2>
+
+    {% if form.errors %}
+    <div class="alert alert-danger">Usuario o contraseña incorrectos.</div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Usuario</label>
+            {{ form.username }}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Contraseña</label>
+            {{ form.password }}
+        </div>
+        <button class="btn btn-primary w-100" type="submit">Entrar</button>
+
+        <hr class="my-4">
+
+        <div class="text-center">
+            <p class="mb-2">¿No tienes cuenta en moc-beauty?</p>
+            <a class="btn btn-outline-primary w-100 mb-2" href="{% url 'moc_beauty:register' %}">
+                Crear cuenta
+            </a>
+
+            <p class="small text-muted">
+                Si ya tienes cuenta pero es tu primera vez en moc-beauty,
+                inicia sesión y te añadiremos automáticamente.
+            </p>
+        </div>
+
+    </form>
+</div>
+{% endblock %}

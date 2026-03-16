@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Aviso legal{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'moc_beauty/css/clinic.css' %}">
+
+<section class="moc container py-4">
+  {% include "moc_beauty/includes/_moc_nav.html" %}
+
+  <header class="moc-pagehead mb-4">
+    <p class="moc-kicker mb-1">Información legal</p>
+    <h1 class="h2 mb-1">Aviso legal</h1>
+    <p class="text-secondary mb-0">Texto demostrativo para la versión de portfolio.</p>
+  </header>
+
+  <section class="moc-panel mb-3">
+    <h2 class="h5 mb-2">Titular de la web</h2>
+    <p class="text-secondary mb-0">
+      Esta web forma parte de una demo de portfolio de MOC Beauty. El contenido es informativo y no constituye oferta comercial vinculante.
+    </p>
+  </section>
+
+  <section class="moc-panel mb-3">
+    <h2 class="h5 mb-2">Condiciones de uso</h2>
+    <p class="text-secondary mb-0">
+      El acceso a este sitio implica la aceptación de un uso responsable, sin realizar acciones que puedan dañar el servicio o su contenido.
+    </p>
+  </section>
+
+  <section class="moc-panel mb-3">
+    <h2 class="h5 mb-2">Propiedad intelectual</h2>
+    <p class="text-secondary mb-0">
+      Diseños, textos e imágenes se muestran con finalidad demostrativa dentro del portfolio, salvo indicación distinta de terceros.
+    </p>
+  </section>
+
+  <section class="moc-panel">
+    <h2 class="h5 mb-2">Responsabilidad</h2>
+    <p class="text-secondary mb-0">
+      La información puede actualizarse o modificarse sin previo aviso. Para información oficial o contractual, utiliza los canales reales de contacto.
+    </p>
+  </section>
+</section>
+{% endblock %}

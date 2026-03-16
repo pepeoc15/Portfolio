@@ -32,15 +32,26 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "apps.p_auth.apps.PAuthConfig",
+
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "portfolio",
-    "dgt_acc_viz",
-]
+    
+    "apps.portfolio.apps.PortfolioConfig",  
+    "apps.moc_beauty.apps.MocBeautyConfig",
+    "apps.dgt_acc_viz.apps.VizConfig",
+    ]
+
+AUTH_USER_MODEL = "p_auth.User"
+
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -57,7 +68,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -119,3 +130,5 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
+
+CLINIC_DEMO_MODE = os.getenv("CLINIC_DEMO_MODE", "1") in ("1", "true", "True")

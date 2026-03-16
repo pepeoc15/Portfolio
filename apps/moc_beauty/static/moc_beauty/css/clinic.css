@@ -1,0 +1,703 @@
+/* Scope: todo lo de MOC bajo .moc para no pisar tu site.css del portfolio */
+.moc{
+  --moc-panel: rgba(255,255,255,.03);
+  --moc-border: rgba(255,255,255,.08);
+  --moc-shadow: 0 14px 40px rgba(0,0,0,.35);
+}
+
+/* Topbar */
+.moc-topbar{
+  background: var(--moc-panel);
+  border: 1px solid var(--moc-border);
+  border-radius: 18px;
+  padding: 14px 16px;
+  box-shadow: var(--moc-shadow);
+}
+
+.moc-mark{
+  background: linear-gradient(135deg, #4da3ff, #8ad0ff);
+  color: #06111b;
+  font-weight: 900;
+  padding: 6px 10px;
+  border-radius: 12px;
+  letter-spacing: .5px;
+}
+.moc-brand-name{
+  font-weight: 800;
+  line-height: 1.1;
+}
+.moc-brand-sub{
+  font-size: 12px;
+  opacity: .75;
+}
+
+.moc-cta{
+  box-shadow: 0 10px 30px rgba(255,193,7,.18);
+}
+
+.moc-icon{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  border: 1px solid var(--moc-border);
+  background: rgba(255,255,255,.02);
+  font-size: 12px;
+  font-weight: 800;
+  opacity: .9;
+}
+.moc-icon:hover{ opacity: 1; }
+
+.moc-client{
+  border-radius: 999px;
+}
+
+/* Hero */
+.moc-hero{
+  background:
+    radial-gradient(1200px 600px at 10% 0%, rgba(77,163,255,.18), transparent 60%),
+    radial-gradient(1200px 600px at 90% 0%, rgba(255,193,7,.10), transparent 60%),
+    rgba(255,255,255,.03);
+  border: 1px solid var(--moc-border);
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: var(--moc-shadow);
+}
+
+.moc-kicker{
+  font-size: 13px;
+  opacity: .8;
+  margin-bottom: 0;
+}
+
+.moc-badge{
+  border-color: var(--moc-border) !important;
+}
+
+/* Hero card */
+.moc-hero-card{
+  background: rgba(0,0,0,.12);
+  border: 1px solid var(--moc-border);
+  border-radius: 18px;
+  padding: 16px;
+}
+.moc-hero-card-title{
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.moc-hero-card-body > div{
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(255,255,255,.10);
+}
+.moc-hero-card-body > div:last-child{ border-bottom: none; }
+
+/* Panel general */
+.moc-panel{
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--moc-border);
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: var(--moc-shadow);
+}
+
+/* Carousel slides */
+.moc-carousel{
+  border-color: var(--moc-border) !important;
+}
+
+.moc-slide{
+  min-height: 170px;
+  padding: 18px;
+  display: flex;
+  align-items: end;
+}
+.moc-slide-content{
+  max-width: 70ch;
+  background: rgba(0,0,0,.18);
+  border: 1px solid var(--moc-border);
+  border-radius: 16px;
+  padding: 14px;
+}
+
+.moc-slide-1{
+  background: linear-gradient(135deg, rgba(77,163,255,.25), rgba(255,255,255,.02));
+}
+.moc-slide-2{
+  background: linear-gradient(135deg, rgba(13,202,240,.20), rgba(255,255,255,.02));
+}
+.moc-slide-3{
+  background: linear-gradient(135deg, rgba(108,117,125,.22), rgba(255,255,255,.02));
+}
+
+/* Cards */
+.moc-card{
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--moc-border);
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: var(--moc-shadow);
+}
+.moc-card-title{
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+/* Legal */
+.moc-legal{
+  opacity: .95;
+}
+
+/* ===========================
+   QUIÉNES SOMOS
+=========================== */
+
+.moc-about {
+  max-width: 1100px;
+}
+
+.moc-clinic-image img {
+  object-fit: cover;
+  max-height: 420px;
+}
+
+.moc-employee-card {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 14px 40px rgba(0,0,0,.35);
+  text-align: center;
+}
+
+.moc-employee-card img {
+  max-height: 260px;
+  object-fit: cover;
+}
+
+.moc-employee-text h3 {
+  font-size: 1.6rem;
+}
+
+/* =========================
+   PAGES: common
+========================= */
+.moc-pagehead{
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: 0 14px 40px rgba(0,0,0,.35);
+}
+
+.moc-empty{
+  background: rgba(255,255,255,.03);
+  border: 1px dashed rgba(255,255,255,.12);
+  border-radius: 20px;
+  padding: 18px;
+}
+.moc-empty-title{
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+
+/* =========================
+   PRODUCTS
+========================= */
+.moc-product-card{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 14px 40px rgba(0,0,0,.35);
+}
+.moc-product-top{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.moc-product-title{
+  font-weight: 900;
+  line-height: 1.2;
+}
+.moc-product-desc{
+  color: rgba(255,255,255,.65);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Modal look */
+.moc-modal{
+  background: #14181c;
+  color: rgba(255,255,255,.92);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 20px;
+}
+.moc-modal-box{
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  padding: 12px;
+}
+.moc-box-title{
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+.moc-list{
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(255,255,255,.72);
+}
+.moc-product-media{
+  height: 100%;
+}
+.moc-product-placeholder{
+  height: 240px;
+  border-radius: 18px;
+  border: 1px dashed rgba(255,255,255,.16);
+  background: rgba(255,255,255,.02);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.moc-product-placeholder-mark{
+  font-weight: 950;
+  letter-spacing: .8px;
+  padding: 8px 14px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(77,163,255,.55), rgba(138,208,255,.45));
+  color: #06111b;
+}
+
+/* =========================
+   SERVICES
+========================= */
+.moc-service-card{
+  padding: 16px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 14px 40px rgba(0,0,0,.35);
+}
+.moc-service-icon{
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.02);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.moc-mini{
+  background: rgba(0,0,0,.12);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  padding: 12px;
+}
+.moc-mini-title{
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+
+.moc-aside{
+  background: rgba(0,0,0,.12);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 18px;
+  padding: 14px;
+}
+.moc-aside-title{
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+/* Table polish */
+.moc-table{
+  border-color: rgba(255,255,255,.10) !important;
+}
+.moc-table th,
+.moc-table td{
+  border-color: rgba(255,255,255,.10) !important;
+}
+
+/* Anchor highlight */
+.moc-highlight{
+  outline: 2px solid rgba(77,163,255,.55);
+  outline-offset: 4px;
+  transition: outline .2s ease;
+}
+
+/* =========================
+   BOOKING: calendar (demo)
+========================= */
+.moc-legend{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.moc-chip{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.02);
+  color: rgba(255,255,255,.75);
+  font-size: 13px;
+  font-weight: 700;
+}
+.moc-chip::before{
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  display: inline-block;
+}
+.moc-chip-free::before{ background: rgba(25,135,84,.85); }
+.moc-chip-busy::before{ background: rgba(220,53,69,.85); }
+.moc-chip-mine::before{ background: rgba(13,202,240,.85); }
+
+/* Calendar layout */
+.moc-calendar-wrap{
+  overflow-x: auto;
+}
+.moc-calendar-head{
+  display: grid;
+  grid-template-columns: 90px repeat(6, minmax(140px, 1fr));
+  gap: 10px;
+  align-items: end;
+  margin-bottom: 10px;
+}
+.moc-cal-corner{
+  height: 48px;
+}
+.moc-cal-day{
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  padding: 10px 12px;
+  font-weight: 900;
+}
+.moc-cal-date{
+  font-size: 12px;
+  font-weight: 700;
+  opacity: .75;
+  margin-top: 2px;
+}
+
+.moc-calendar-grid{
+  display: grid;
+  grid-template-columns: 90px repeat(6, minmax(140px, 1fr));
+  gap: 10px;
+  align-items: stretch;
+}
+
+/* Time column */
+.moc-cal-time{
+  color: rgba(255,255,255,.65);
+  font-weight: 800;
+  font-size: 13px;
+  padding: 10px 6px;
+  border-radius: 14px;
+  text-align: center;
+  border: 1px dashed rgba(255,255,255,.12);
+  background: rgba(255,255,255,.02);
+}
+
+/* Slots */
+.moc-slot{
+  position: relative;
+  border-radius: 16px;
+  padding: 10px 10px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.03);
+  color: rgba(255,255,255,.85);
+  text-align: left;
+  cursor: pointer;
+  min-height: 44px;
+}
+.moc-slot-label{
+  font-size: 12px;
+  font-weight: 800;
+  opacity: .85;
+}
+.moc-slot.free{
+  border-color: rgba(25,135,84,.35);
+  background: rgba(25,135,84,.08);
+}
+.moc-slot.free:hover{
+  outline: 2px solid rgba(25,135,84,.35);
+  outline-offset: 2px;
+}
+
+.moc-slot.busy{
+  border-color: rgba(220,53,69,.30);
+  background: rgba(220,53,69,.08);
+  cursor: not-allowed;
+  opacity: .75;
+}
+.moc-slot.mine{
+  border-color: rgba(13,202,240,.35);
+  background: rgba(13,202,240,.10);
+}
+.moc-slot.mine:hover{
+  outline: 2px solid rgba(13,202,240,.35);
+  outline-offset: 2px;
+}
+
+/* Responsive: reduce columnas en móvil con scroll horizontal */
+@media (max-width: 720px){
+  .moc-calendar-head,
+  .moc-calendar-grid{
+    grid-template-columns: 80px repeat(6, 160px);
+  }
+}
+
+/* =========================
+   MOC NAV (include _moc_nav.html)
+========================= */
+.moc-nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 14px 40px rgba(0,0,0,.35);
+}
+
+.moc-logo{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 900;
+}
+
+.moc-logo-mark{
+  padding: 6px 10px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4da3ff, #8ad0ff);
+  color: #06111b;
+  letter-spacing: .5px;
+}
+
+.moc-logo-text{
+  font-weight: 900;
+  opacity: .95;
+}
+
+.moc-nav-links{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.moc-nav-links > a{
+  text-decoration: none;
+  color: rgba(255,255,255,.78);
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.moc-nav-links > a:hover{
+  color: rgba(255,255,255,.92);
+  border-color: rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+}
+
+.moc-nav-links > a.cta{
+  color: #1b1300;
+  background: rgba(255,193,7,.92);
+  border-color: rgba(255,193,7,.30);
+  box-shadow: 0 10px 30px rgba(255,193,7,.18);
+}
+
+.moc-nav-links > a.cta:hover{
+  filter: brightness(0.98);
+}
+
+.moc-icons{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 6px;
+  margin-left: 6px;
+  border-left: 1px solid rgba(255,255,255,.10);
+}
+
+.moc-icons .icon{
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.02);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(255,255,255,.82);
+  text-decoration: none;
+}
+
+.moc-icons .icon:hover{
+  color: rgba(255,255,255,.95);
+  background: rgba(255,255,255,.03);
+}
+
+.moc-nav-links > a.client-area{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-color: rgba(13,202,240,.25);
+  background: rgba(13,202,240,.08);
+  color: rgba(255,255,255,.88);
+}
+
+.moc-nav-links > a.client-area:hover{
+  border-color: rgba(13,202,240,.35);
+  background: rgba(13,202,240,.10);
+}
+
+.moc-nav-links .client-icon{
+  font-size: 14px;
+}
+
+@media (max-width: 992px){
+  .moc-nav{
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .moc-nav-links{
+    justify-content: flex-start;
+  }
+  .moc-icons{
+    border-left: none;
+    padding-left: 0;
+    margin-left: 0;
+  }
+}
+
+/* =========================
+   Theme tokens para MOC
+   (compatible con data-bs-theme="light|dark")
+========================= */
+.moc{
+  --moc-text: rgba(255,255,255,.88);
+  --moc-muted: rgba(255,255,255,.65);
+  --moc-panel: rgba(255,255,255,.03);
+  --moc-border: rgba(255,255,255,.08);
+  --moc-hover: rgba(255,255,255,.03);
+  --moc-shadow: 0 14px 40px rgba(0,0,0,.35);
+}
+
+:root[data-bs-theme="light"] .moc{
+  --moc-text: rgba(0,0,0,.82);
+  --moc-muted: rgba(0,0,0,.60);
+  --moc-panel: rgba(0,0,0,.03);
+  --moc-border: rgba(0,0,0,.10);
+  --moc-hover: rgba(0,0,0,.04);
+  --moc-shadow: 0 14px 40px rgba(0,0,0,.12);
+}
+
+/* =========================
+   MOC NAV (redefinido con variables)
+========================= */
+.moc-nav{
+  background: var(--moc-panel);
+  border: 1px solid var(--moc-border);
+  box-shadow: var(--moc-shadow);
+}
+
+.moc-logo{
+  color: var(--moc-text);
+}
+
+.moc-nav-links > a{
+  color: var(--moc-muted);
+}
+
+.moc-nav-links > a:hover{
+  color: var(--moc-text);
+  border-color: var(--moc-border);
+  background: var(--moc-hover);
+}
+
+.moc-icons{
+  border-left: 1px solid var(--moc-border);
+}
+
+.moc-icons .icon{
+  border: 1px solid var(--moc-border);
+  background: var(--moc-panel);
+  color: var(--moc-muted);
+}
+
+.moc-icons .icon:hover{
+  color: var(--moc-text);
+  background: var(--moc-hover);
+}
+
+/* Área clientes: que se vea en claro y oscuro */
+.moc-nav-links > a.client-area{
+  border-color: rgba(13,202,240,.28);
+  background: rgba(13,202,240,.10);
+  color: var(--moc-text);
+}
+
+:root[data-bs-theme="light"] .moc-nav-links > a.client-area{
+  border-color: rgba(13,202,240,.35);
+  background: rgba(13,202,240,.14);
+}
+
+/* Chips/badges dentro de MOC: en light, bordes oscuros suaves */
+:root[data-bs-theme="light"] .moc .moc-badge{
+  color: rgba(0,0,0,.75) !important;
+  border-color: rgba(0,0,0,.14) !important;
+}
+
+
+/* =========================
+   AUTH (login)
+========================= */
+.moc-auth-card{
+  background: var(--moc-panel);
+  border: 1px solid var(--moc-border);
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: var(--moc-shadow);
+}
+
+.moc-auth-error{
+  background: rgba(220,53,69,.10);
+  border: 1px solid rgba(220,53,69,.25);
+  color: var(--moc-text);
+  border-radius: 14px;
+  padding: 10px 12px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+:root[data-bs-theme="light"] .moc-auth-error{
+  background: rgba(220,53,69,.08);
+  border-color: rgba(220,53,69,.22);
+}

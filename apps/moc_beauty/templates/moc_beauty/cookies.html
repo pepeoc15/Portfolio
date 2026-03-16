@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Cookies{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'moc_beauty/css/clinic.css' %}">
+
+<section class="moc container py-4">
+  {% include "moc_beauty/includes/_moc_nav.html" %}
+
+  <header class="moc-pagehead mb-4">
+    <p class="moc-kicker mb-1">Navegación y preferencias</p>
+    <h1 class="h2 mb-1">Política de cookies</h1>
+    <p class="text-secondary mb-0">Documento informativo en contexto demo.</p>
+  </header>
+
+  <section class="moc-panel mb-3">
+    <h2 class="h5 mb-2">Qué son las cookies</h2>
+    <p class="text-secondary mb-0">
+      Son pequeños archivos que ayudan a recordar preferencias y mejorar la experiencia de uso.
+    </p>
+  </section>
+
+  <section class="moc-panel mb-3">
+    <h2 class="h5 mb-2">Cookies utilizadas en esta demo</h2>
+    <p class="text-secondary mb-0">
+      Este sitio usa elementos mínimos del navegador, por ejemplo para recordar el tema visual (oscuro/claro) en el cliente.
+    </p>
+  </section>
+
+  <section class="moc-panel mb-3">
+    <h2 class="h5 mb-2">Gestión de cookies</h2>
+    <p class="text-secondary mb-0">
+      Puedes eliminar o bloquear cookies desde la configuración de tu navegador. Esto puede afectar algunas preferencias de interfaz.
+    </p>
+  </section>
+
+  <section class="moc-panel">
+    <h2 class="h5 mb-2">Actualizaciones</h2>
+    <p class="text-secondary mb-0">
+      Esta política puede actualizarse para reflejar cambios funcionales del proyecto cuando evolucione de demo a versión operativa.
+    </p>
+  </section>
+</section>
+{% endblock %}

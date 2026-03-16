@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Clínica estética{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'moc_beauty/css/clinic.css' %}">
+
+<section class="moc container py-4">
+
+  {% include "moc_beauty/includes/_moc_nav.html" %}
+
+  <!-- HERO -->
+  <header class="moc-hero mb-4" id="quienes-somos">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-7">
+        <p class="moc-kicker mb-2">Clínica estética</p>
+        <h1 class="display-5 fw-semibold mb-2">Cuida tu piel. Potencia tu bienestar.</h1>
+        <p class="text-secondary mb-3">
+          Depilación láser · Presoterapia · Masaje / Quiromasaje.
+          Reserva tu cita en 1 minuto (demo, sin funcionalidad todavía).
+        </p>
+
+        <div class="d-flex flex-wrap gap-2">
+          <a class="btn btn-primary fw-semibold" href="{% url 'moc_beauty:pedir_cita' %}">Pedir cita</a>
+          <a class="btn btn-outline-secondary" href="{% url 'moc_beauty:servicios' %}">Ver servicios</a>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2 mt-3">
+          <span class="badge text-bg-secondary-subtle border moc-badge">Atención personalizada</span>
+          <span class="badge text-bg-secondary-subtle border moc-badge">Tratamientos no invasivos</span>
+          <span class="badge text-bg-secondary-subtle border moc-badge">Higiene y seguridad</span>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="moc-hero-card">
+          <div class="moc-hero-card-title">Horarios (demo)</div>
+          <div class="moc-hero-card-body text-secondary">
+            <div class="d-flex justify-content-between"><span>L–V</span><span>10:00–20:00</span></div>
+            <div class="d-flex justify-content-between"><span>Sábado</span><span>10:00–14:00</span></div>
+            <div class="d-flex justify-content-between"><span>Domingo</span><span>Cerrado</span></div>
+          </div>
+          <div class="mt-3">
+            <a class="btn btn-sm btn-outline-secondary w-100" href="{% url 'moc_beauty:pedir_cita' %}">Reservar (demo)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CAROUSEL (Bootstrap) -->
+  <section class="moc-panel mb-4">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <h2 class="h5 mb-0">Promos y novedades</h2>
+      <div class="text-secondary small">Carrusel demo</div>
+    </div>
+
+    <div id="mocCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#mocCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#mocCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#mocCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+
+      <div class="carousel-inner rounded-4 overflow-hidden border moc-carousel">
+        <div class="carousel-item active">
+          <div class="moc-slide moc-slide-1">
+            <div class="moc-slide-content">
+              <span class="badge text-bg-warning fw-semibold">Promo</span>
+              <h3 class="h4 mt-2">Depilación láser: pack inicial</h3>
+              <p class="text-secondary mb-0">Descuento de bienvenida en tu primera sesión (texto demo).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="moc-slide moc-slide-2">
+            <div class="moc-slide-content">
+              <span class="badge text-bg-info fw-semibold">Novedad</span>
+              <h3 class="h4 mt-2">Presoterapia post-entreno</h3>
+              <p class="text-secondary mb-0">Recuperación y descanso con sesiones guiadas (texto demo).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="moc-slide moc-slide-3">
+            <div class="moc-slide-content">
+              <span class="badge text-bg-secondary fw-semibold">Info</span>
+              <h3 class="h4 mt-2">Rutina de cuidado facial</h3>
+              <p class="text-secondary mb-0">Limpieza, hidratación y SPF: lo básico bien hecho (texto demo).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#mocCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#mocCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- 3 BLOQUES -->
+  <section class="row g-3 mb-4">
+    <div class="col-lg-4" id="servicios">
+      <div class="moc-card h-100">
+        <div class="moc-card-title">Servicios</div>
+        <p class="text-secondary mb-3">Listado breve (demo). Depilación láser, presoterapia, masajes…</p>
+        <a class="link-secondary text-decoration-none fw-semibold" href="{% url 'moc_beauty:servicios' %}">Ver más →</a>
+      </div>
+    </div>
+
+    <div class="col-lg-4" id="productos">
+      <div class="moc-card h-100">
+        <div class="moc-card-title">Productos</div>
+        <p class="text-secondary mb-3">Catálogo (demo). Más adelante: filtros, stock, detalle de producto.</p>
+        <a class="link-secondary text-decoration-none fw-semibold" href="{% url 'moc_beauty:productos' %}">Ver más →</a>
+      </div>
+    </div>
+
+    <div class="col-lg-4" id="pedir-cita">
+      <div class="moc-card h-100">
+        <div class="moc-card-title">Pedir cita</div>
+        <p class="text-secondary mb-3">Maquetación. En siguiente iteración: formulario real + validación.</p>
+        <button class="btn btn-primary w-100" type="button" disabled>Reservar (demo)</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mini footer legal (antes del footer del portfolio que ya existe en base.html) -->
+  <footer class="moc-legal border-top pt-3" id="area-clientes">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
+      <div class="text-secondary small">© <span id="mocYear"></span> MOC Beauty (demo)</div>
+      <div class="d-flex flex-wrap gap-3 small">
+        <a class="link-secondary text-decoration-none" href="{% url 'moc_beauty:aviso_legal' %}">Aviso legal</a>
+        <a class="link-secondary text-decoration-none" href="{% url 'moc_beauty:privacidad' %}">Privacidad</a>
+        <a class="link-secondary text-decoration-none" href="{% url 'moc_beauty:cookies' %}">Cookies</a>
+        <a class="link-secondary text-decoration-none" href="{% url 'moc_beauty:contacto' %}">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+</section>
+
+<script src="{% static 'moc_beauty/js/clinic.js' %}"></script>
+{% endblock %}

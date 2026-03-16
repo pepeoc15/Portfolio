@@ -16,10 +16,17 @@ Including another URLconf
 """
 
 from django.contrib import admin
+from django.http import HttpResponse
 from django.urls import path, include
 
 urlpatterns = [
+    path("auth/", include("apps.p_auth.urls")),
+    path(
+        ".well-known/appspecific/com.chrome.devtools.json",
+        lambda request: HttpResponse(status=204),
+    ),
     path("admin/", admin.site.urls),
-    path("dgt-acc-viz/", include("dgt_acc_viz.urls")),
-    path("", include("portfolio.urls")),
+    path("dgt-acc-viz/", include("apps.dgt_acc_viz.urls")),
+    path("moc-beauty/", include("apps.moc_beauty.urls")),
+    path("", include("apps.portfolio.urls")),
 ]

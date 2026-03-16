@@ -1,0 +1,24 @@
+
+  .map-wrap iframe {
+    width: 100%;
+    height: 78vh;
+    border: 0;
+    display: block;
+  }
+  select, input[type="text"] {
+    width: 100%;
+  }
+  .page-wrapper {
+  max-width: 90vw;   /* ← aquí juegas: 85vw / 90vw */
+  margin: 0 auto;    /* centra */
+}
+.map-wrap{
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+
+/* Folium/Leaflet */
+.leaflet-container,
+.folium-map{
+  border-radius: 1.25rem;
+}

@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Quiénes somos{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'moc_beauty/css/clinic.css' %}">
+
+<section class="moc moc-about container py-4">
+    {% include "moc_beauty/includes/_moc_nav.html" %}
+
+  <!-- FILA 1 - Imagen clínica full width -->
+  <div class="row mb-5">
+    <div class="col-12">
+      <div class="moc-clinic-image">
+        <img src="{% static 'moc_beauty/img/clinica_demo.jpg' %}" 
+             alt="Clínica estética" 
+             class="img-fluid w-100 rounded-4">
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 2 - Empleado 1 -->
+  <div class="row align-items-center mb-5 g-4">
+    <!-- Card izquierda -->
+    <div class="col-lg-4">
+      <div class="moc-employee-card">
+        <img src="{% static 'moc_beauty/img/empleado1.jpg' %}" 
+             class="img-fluid rounded-4 mb-3"
+             alt="Empleado 1">
+        <h5 class="fw-bold mb-1">Laura Martínez</h5>
+        <div class="text-secondary small mb-2">Especialista en láser</div>
+      </div>
+    </div>
+
+    <!-- Presentación derecha -->
+    <div class="col-lg-8">
+      <div class="moc-employee-text">
+        <h3 class="fw-semibold mb-3">Compromiso y profesionalidad</h3>
+        <p class="text-secondary">
+          Laura cuenta con más de 8 años de experiencia en tratamientos
+          de depilación láser y cuidado avanzado de la piel.
+        </p>
+        <p class="text-secondary">
+          Formación continua y trato personalizado son la base
+          de su filosofía de trabajo.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 3 - Empleado 2 (invertido) -->
+  <div class="row align-items-center mb-5 g-4">
+    
+    <!-- Presentación izquierda -->
+    <div class="col-lg-8 order-lg-1 order-2">
+      <div class="moc-employee-text">
+        <h3 class="fw-semibold mb-3">Bienestar integral</h3>
+        <p class="text-secondary">
+          Carlos es especialista en presoterapia y masajes terapéuticos,
+          centrado en recuperación muscular y relajación profunda.
+        </p>
+        <p class="text-secondary">
+          Cada tratamiento es personalizado según las necesidades
+          del cliente.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card derecha -->
+    <div class="col-lg-4 order-lg-2 order-1">
+      <div class="moc-employee-card">
+        <img src="{% static 'moc_beauty/img/empleado2.jpg' %}" 
+             class="img-fluid rounded-4 mb-3"
+             alt="Empleado 2">
+        <h5 class="fw-bold mb-1">Carlos López</h5>
+        <div class="text-secondary small mb-2">Presoterapia y masajes</div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+{% endblock %}

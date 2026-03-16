@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}DGT Accident Viz · Pepe Osuna{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'dgt_acc_viz/dgt.css' %}">
+
+<div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-3">
+  <div>
+    <h1 class="h3 fw-bold mb-1">DGT Accident Visualizer</h1>
+    <p class="text-muted mb-0">Filtros + mapa interactivo (Django + Folium).</p>
+  </div>
+
+  <div class="d-flex gap-2">
+    <a class="btn btn-sm btn-outline-secondary" href="{% url 'portfolio:index' %}">Volver</a>
+  </div>
+</div>
+
+<div class="card border-0 shadow-sm rounded-4 mb-4">
+  <div class="card-body p-4">
+    <form method="get" class="row g-3 align-items-end">
+      <div class="col-12 col-md-2">
+        <label class="form-label">Nivel</label>
+        {{ form.level }}
+      </div>
+
+      <div id="municipio-filters" class="col-12 d-none">
+        <div class="row g-3">
+          <div class="col-12 col-md-2">
+            <label class="form-label" for="id_ccaa">CCAA</label>
+            {{ form.ccaa }}
+          </div>
+
+          <div class="col-12 col-md-3">
+            <label class="form-label" for="id_provincia">Provincia</label>
+            {{ form.provincia }}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3">
+        <label class="form-label">Métrica</label>
+        {{ form.metric }}
+      </div>
+
+      <div class="col-6 col-md-1">
+        <label class="form-label">Año</label>
+        {{ form.anyo }}
+      </div>
+
+      <div class="col-6 col-md-1">
+        <label class="form-label">Acumulado</label>
+        <div class="form-check">
+          {{ form.acumulado }}
+        </div>
+      </div>
+
+      <div class="col-12 col-md-2">
+        <label class="form-label">Tipo vía</label>
+        {{ form.tipo_via }}
+      </div>
+
+      <div class="col-12 col-md-2">
+        <label class="form-label">Tipo accidente</label>
+        {{ form.tipo_accidente }}
+      </div>
+
+      <div class="col-12 col-md-1 d-grid">
+        <button class="btn btn-primary" type="submit">Actualizar</button>
+      </div>
+    </form>
+
+    <div class="text-muted small mt-2">
+      Consejo: usa “Acumulado” para ver el total sin filtrar por año.
+    </div>
+  </div>
+</div>
+
+{% if validation_error %}
+  <div class="alert alert-warning">
+    {{ validation_error }}
+  </div>
+{% endif %}
+
+<div class="card border-0 shadow-sm rounded-4">
+  <div class="card-body p-0">
+    <div class="map-wrap">
+      {{ map_html|safe }}
+    </div>
+  </div>
+</div>
+
+{% if top10 %}
+  <div class="card border-0 shadow-sm rounded-4 mt-4">
+    <div class="card-body p-4">
+      <h3 class="h5 fw-semibold mb-2">Top 10 ({{ level }}) — {{ metric }}</h3>
+      <ol class="mb-0 ps-3">
+        {% for r in top10 %}
+          <li><strong>{{ r.label }}</strong> — {{ r.value|floatformat:0 }}</li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+{% endif %}
+
+<script>
+  // 1) Acumulado deshabilita año
+  const chk = document.getElementById("id_acumulado");
+  const year = document.getElementById("id_anyo");
+  function syncAcumulado() {
+    if (!chk || !year) return;
+    year.disabled = chk.checked;
+    year.style.opacity = chk.checked ? 0.6 : 1;
+  }
+  if (chk) chk.addEventListener("change", syncAcumulado);
+  syncAcumulado();
+
+  // 2) Mostrar/ocultar filtros municipio + validación submit
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector("form");
+    const level = document.getElementById("id_level");
+    const block = document.getElementById("municipio-filters");
+    const ccaa = document.getElementById("id_ccaa");
+    const prov = document.getElementById("id_provincia");
+
+    function toggleMunicipioFilters() {
+      if (!level || !block) return;
+      if (level.value === "municipio") {
+        block.classList.remove("d-none");
+      } else {
+        block.classList.add("d-none");
+        if (ccaa) ccaa.value = "__all__";
+        if (prov) prov.value = "__all__";
+      }
+    }
+
+    toggleMunicipioFilters();
+    if (level) level.addEventListener("change", toggleMunicipioFilters);
+
+    if (!form) return;
+    form.addEventListener("submit", (e) => {
+      if (!level || level.value !== "municipio") return;
+
+      const ccaaVal = ccaa ? ccaa.value : "__all__";
+      const provVal = prov ? prov.value : "__all__";
+
+      if (ccaaVal === "__all__" && provVal === "__all__") {
+        e.preventDefault();
+        alert("Para ver Municipios, selecciona una CCAA o una Provincia.");
+        return;
+      }
+      // si ambos son específicos, fuerza CCAA a all y deja provincia
+      if (ccaaVal !== "__all__" && provVal !== "__all__" && ccaa) {
+        ccaa.value = "__all__";
+      }
+    });
+  });
+</script>
+{% endblock %}

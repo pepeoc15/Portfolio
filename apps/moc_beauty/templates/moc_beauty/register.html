@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5" style="max-width:520px;">
+  <h2 class="mb-3">Crear cuenta</h2>
+
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    <div class="mb-3">{{ form.username.label_tag }}{{ form.username }}{{ form.username.errors }}</div>
+    <div class="mb-3">{{ form.email.label_tag }}{{ form.email }}{{ form.email.errors }}</div>
+    <div class="mb-3">{{ form.nif.label_tag }}{{ form.nif }}{{ form.nif.errors }}</div>
+    <div class="mb-3">{{ form.tlf.label_tag }}{{ form.tlf }}{{ form.tlf.errors }}</div>
+
+    <div class="mb-3">{{ form.password1.label_tag }}{{ form.password1 }}{{ form.password1.errors }}</div>
+    <div class="mb-3">{{ form.password2.label_tag }}{{ form.password2 }}{{ form.password2.errors }}</div>
+
+    <button class="btn btn-primary w-100" type="submit">Registrarme</button>
+  </form>
+
+  <hr class="my-4">
+  <p class="mb-0">
+    ¿Ya tienes cuenta?
+    <a href="{% url 'login' %}?next={% url 'moc_beauty:join' %}">Inicia sesión</a>
+  </p>
+</div>
+{% endblock %}

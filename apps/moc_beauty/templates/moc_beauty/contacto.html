@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contacto{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'moc_beauty/css/clinic.css' %}">
+
+<section class="moc container py-4">
+  {% include "moc_beauty/includes/_moc_nav.html" %}
+
+  <header class="moc-pagehead mb-4">
+    <p class="moc-kicker mb-1">Atención</p>
+    <h1 class="h2 mb-1">Contacto</h1>
+    <p class="text-secondary mb-0">Canales de contacto demostrativos para el portfolio.</p>
+  </header>
+
+  <section class="row g-3">
+    <div class="col-lg-6">
+      <article class="moc-panel h-100">
+        <h2 class="h5 mb-3">Datos de la clínica (demo)</h2>
+        <p class="text-secondary mb-2">Teléfono: 600 000 000</p>
+        <p class="text-secondary mb-2">Email: contacto@mocbeauty.demo</p>
+        <p class="text-secondary mb-0">Dirección: Calle Ejemplo 123, Madrid</p>
+      </article>
+    </div>
+
+    <div class="col-lg-6">
+      <article class="moc-panel h-100">
+        <h2 class="h5 mb-3">Horario (demo)</h2>
+        <p class="text-secondary mb-2">Lunes a viernes: 10:00 - 20:00</p>
+        <p class="text-secondary mb-2">Sábado: 10:00 - 14:00</p>
+        <p class="text-secondary mb-0">Domingo: cerrado</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="moc-panel mt-3">
+    <h2 class="h5 mb-2">Reserva rápida</h2>
+    <p class="text-secondary mb-3">Para pedir cita en la demo, usa la página de reservas.</p>
+    <a class="btn btn-primary" href="{% url 'moc_beauty:pedir_cita' %}">Ir a pedir cita</a>
+  </section>
+</section>
+{% endblock %}

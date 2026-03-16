@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Privacidad{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'moc_beauty/css/clinic.css' %}">
+
+<section class="moc container py-4">
+  {% include "moc_beauty/includes/_moc_nav.html" %}
+
+  <header class="moc-pagehead mb-4">
+    <p class="moc-kicker mb-1">Protección de datos</p>
+    <h1 class="h2 mb-1">Política de privacidad</h1>
+    <p class="text-secondary mb-0">Versión demo para el proyecto de portfolio.</p>
+  </header>
+
+  <section class="moc-panel mb-3">
+    <h2 class="h5 mb-2">Qué datos se recopilan</h2>
+    <p class="text-secondary mb-0">
+      En esta demo no se procesan citas reales ni se guarda información personal sensible. Algunos formularios son únicamente maquetación.
+    </p>
+  </section>
+
+  <section class="moc-panel mb-3">
+    <h2 class="h5 mb-2">Finalidad del tratamiento</h2>
+    <p class="text-secondary mb-0">
+      Mostrar funcionalidad visual de la plataforma y explicar cómo sería un flujo de reserva en una versión productiva.
+    </p>
+  </section>
+
+  <section class="moc-panel mb-3">
+    <h2 class="h5 mb-2">Base legal y conservación</h2>
+    <p class="text-secondary mb-0">
+      Al tratarse de un entorno demostrativo, no existe tratamiento comercial activo ni plazos de conservación asociados a clientes reales.
+    </p>
+  </section>
+
+  <section class="moc-panel">
+    <h2 class="h5 mb-2">Derechos de las personas usuarias</h2>
+    <p class="text-secondary mb-0">
+      En un entorno real, podrías ejercer derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad a través de contacto.
+    </p>
+  </section>
+</section>
+{% endblock %}
