@@ -8,44 +8,29 @@
   {% endif %}
 
   {% if form.errors %}
-    <div class="alert alert-danger">
-      Usuario o contraseña incorrectos.
-    </div>
+    <div class="alert alert-danger">Usuario o contraseña incorrectos.</div>
   {% endif %}
 
   <form method="post" novalidate>
     {% csrf_token %}
-
     <div class="mb-3">
       <label class="form-label" for="{{ form.username.id_for_label }}">Usuario</label>
       {{ form.username }}
     </div>
-
     <div class="mb-3">
       <label class="form-label" for="{{ form.password.id_for_label }}">Contraseña</label>
       {{ form.password }}
     </div>
-
     <button type="submit" class="btn btn-primary w-100">Entrar</button>
   </form>
 
-  {% if register_url or join_url %}
+  {% if register_url %}
     <hr class="my-4">
-
     <div class="text-center">
-      {% if register_url %}
-        <p class="mb-2">¿No tienes cuenta en {{ app_label }}?</p>
-        <a class="btn btn-outline-primary w-100 mb-3" href="{{ register_url }}">
-          Crear cuenta
-        </a>
-      {% endif %}
-
-      {% if join_url %}
-        <p class="mb-2">¿Ya tienes cuenta y es tu primera vez en {{ app_label }}?</p>
-        <p class="small text-muted mb-0">
-          Inicia sesión y te añadiremos automáticamente a esta aplicación.
-        </p>
-      {% endif %}
+      <p class="mb-2">¿No tienes cuenta en {{ app_label }}?</p>
+      <a class="btn btn-outline-primary w-100" href="{{ register_url }}">
+        Crear cuenta
+      </a>
     </div>
   {% endif %}
 </div>

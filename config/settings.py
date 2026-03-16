@@ -86,12 +86,14 @@ APP_AUTH_CONFIG = {
         "label": "Moc Beauty",
         "join_url_name": "moc_beauty:join",
         "register_url_name": "moc_beauty:register",
+        "logout_redirect_url_name": "moc_beauty:public_home",
+        "public_index": True,
     },
-    # "dgt_acc_viz": {
-    #     "label": "DGT ACC VIZ",
-    #     "join_url_name": "dgt_acc_viz:join",
-    #     "register_url_name": "dgt_acc_viz:register",
-    # },
+    "portfolio": {
+        "label": "Portfolio",
+        "logout_redirect_url_name": "portfolio:home",
+        "public_index": True,
+    },
 }
 
 
