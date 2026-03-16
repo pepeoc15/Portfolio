@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 from .decorators import mb_role_required
 
 from .forms import MBRegisterForm
@@ -33,9 +34,6 @@ def cookies(request):
 
 def contacto(request):
     return render(request, "moc_beauty/contacto.html")
-
-def login_redirect(request):
-    return redirect("login")  # el login global (p_auth) si name="login"
 
 @mb_role_required("ADMIN", "EMPLEADO")
 def dashboard(request):

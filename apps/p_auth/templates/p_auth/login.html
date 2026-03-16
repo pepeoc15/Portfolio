@@ -1,38 +1,52 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container py-5" style="max-width: 420px;">
-    <h2 class="mb-4">Iniciar sesión</h2>
+<div class="container py-5" style="max-width: 520px;">
+  <h2 class="mb-4">Iniciar sesión</h2>
 
-    {% if form.errors %}
-    <div class="alert alert-danger">Usuario o contraseña incorrectos.</div>
-    {% endif %}
+  {% if app_label %}
+    <p class="text-muted">Acceso a {{ app_label }}</p>
+  {% endif %}
 
-    <form method="post">
-        {% csrf_token %}
-        <div class="mb-3">
-            <label class="form-label">Usuario</label>
-            {{ form.username }}
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Contraseña</label>
-            {{ form.password }}
-        </div>
-        <button class="btn btn-primary w-100" type="submit">Entrar</button>
+  {% if form.errors %}
+    <div class="alert alert-danger">
+      Usuario o contraseña incorrectos.
+    </div>
+  {% endif %}
 
-        <hr class="my-4">
+  <form method="post" novalidate>
+    {% csrf_token %}
 
-        <div class="text-center">
-            <p class="mb-2">¿No tienes cuenta en moc-beauty?</p>
-            <a class="btn btn-outline-primary w-100 mb-2" href="{% url 'moc_beauty:register' %}">
-                Crear cuenta
-            </a>
+    <div class="mb-3">
+      <label class="form-label" for="{{ form.username.id_for_label }}">Usuario</label>
+      {{ form.username }}
+    </div>
 
-            <p class="small text-muted">
-                Si ya tienes cuenta pero es tu primera vez en moc-beauty,
-                inicia sesión y te añadiremos automáticamente.
-            </p>
-        </div>
+    <div class="mb-3">
+      <label class="form-label" for="{{ form.password.id_for_label }}">Contraseña</label>
+      {{ form.password }}
+    </div>
 
-    </form>
+    <button type="submit" class="btn btn-primary w-100">Entrar</button>
+  </form>
+
+  {% if register_url or join_url %}
+    <hr class="my-4">
+
+    <div class="text-center">
+      {% if register_url %}
+        <p class="mb-2">¿No tienes cuenta en {{ app_label }}?</p>
+        <a class="btn btn-outline-primary w-100 mb-3" href="{{ register_url }}">
+          Crear cuenta
+        </a>
+      {% endif %}
+
+      {% if join_url %}
+        <p class="mb-2">¿Ya tienes cuenta y es tu primera vez en {{ app_label }}?</p>
+        <p class="small text-muted mb-0">
+          Inicia sesión y te añadiremos automáticamente a esta aplicación.
+        </p>
+      {% endif %}
+    </div>
+  {% endif %}
 </div>
 {% endblock %}

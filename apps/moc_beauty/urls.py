@@ -1,4 +1,6 @@
 from django.urls import path
+from django.views.generic import RedirectView
+from django.urls import reverse_lazy
 from . import views
 
 app_name = "moc_beauty"
@@ -13,8 +15,12 @@ urlpatterns = [
     path("privacidad/", views.privacidad, name="privacidad"),
     path("cookies/", views.cookies, name="cookies"),
     path("contacto/", views.contacto, name="contacto"),
-    path("login/", views.login_redirect, name="login_redirect"),
     path("registrarse/", views.register, name="register"),
     path("unirse/", views.join, name="join"),
     path("dashboard/", views.dashboard, name="dashboard"),
+    path(
+        "login/",
+        RedirectView.as_view(url=reverse_lazy("app_login_redirect", kwargs={"app_key": "moc_beauty"})),
+        name="login_redirect",
+    ),
 ]

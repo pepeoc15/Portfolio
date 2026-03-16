@@ -80,6 +80,21 @@ TEMPLATES = [
     },
 ]
 
+
+APP_AUTH_CONFIG = {
+    "moc_beauty": {
+        "label": "Moc Beauty",
+        "join_url_name": "moc_beauty:join",
+        "register_url_name": "moc_beauty:register",
+    },
+    # "dgt_acc_viz": {
+    #     "label": "DGT ACC VIZ",
+    #     "join_url_name": "dgt_acc_viz:join",
+    #     "register_url_name": "dgt_acc_viz:register",
+    # },
+}
+
+
 WSGI_APPLICATION = "config.wsgi.application"
 
 
