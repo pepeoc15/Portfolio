@@ -86,4 +86,4 @@ def join(request):
         role=role,
         defaults={"active": True},
     )
-    return redirect("moc_beauty:public_home")
+    return redirect("moc_beauty:pedir_cita")

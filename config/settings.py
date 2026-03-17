@@ -80,6 +80,7 @@ TEMPLATES = [
     },
 ]
 
+LOGOUT_REDIRECT_URL = "/"
 
 APP_AUTH_CONFIG = {
     "moc_beauty": {
@@ -91,7 +92,7 @@ APP_AUTH_CONFIG = {
     },
     "portfolio": {
         "label": "Portfolio",
-        "logout_redirect_url_name": "portfolio:home",
+        "logout_redirect_url_name": "portfolio:index",
         "public_index": True,
     },
 }

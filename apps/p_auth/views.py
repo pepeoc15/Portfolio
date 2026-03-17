@@ -50,4 +50,4 @@ class AppLogoutView(LogoutView):
     def get_default_redirect_url(self):
         if self.app_config and self.app_config.get("logout_redirect_url_name"):
             return reverse(self.app_config["logout_redirect_url_name"])
-        return reverse("portfolio:home")
+        return settings.LOGOUT_REDIRECT_URL

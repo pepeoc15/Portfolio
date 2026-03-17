@@ -1,6 +1,8 @@
 from django.urls import path
 from .views import AppLoginView, AppLogoutView
 
+app_name = "p_auth"
+
 urlpatterns = [
     path("login/", AppLoginView.as_view(), name="login"),
     path("login/<slug:app_key>/", AppLoginView.as_view(), name="app_login"),

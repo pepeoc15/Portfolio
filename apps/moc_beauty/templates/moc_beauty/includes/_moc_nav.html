@@ -20,14 +20,14 @@
     </div>
 
     {% if request.user.is_authenticated %}
-    <a class="client-area" href="{% url 'moc_beauty:pedir_cita' %}">
-      Área clientes
-    </a>
-    {% else %}
-    <a class="client-area" href="{% url 'login' %}">Área clientes</a>
-      Área clientes
-    </a>
-    {% endif %}
+  <a class="client-area" href="{% url 'moc_beauty:pedir_cita' %}">
+    Área clientes
+  </a>
+{% else %}
+  <a class="client-area" href="{% url 'p_auth:app_login' 'moc_beauty' %}">
+    Área clientes
+  </a>
+{% endif %}
 
   </div>
 </nav>
