@@ -1,10 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
-from django.urls import reverse
 
 from .decorators import mb_role_required
-from .forms import MBRegisterForm
 from .models import MBRole, MBMembership
 
 
@@ -46,36 +43,16 @@ def contacto(request):
 
 
 def login_redirect(request):
-    return redirect("app_login", app_key="moc_beauty")
+    return redirect("p_auth:app_login", app_key="moc_beauty")
+
+
+def register_redirect(request):
+    return redirect("p_auth:app_register", app_key="moc_beauty")
 
 
 @mb_role_required("ADMIN", "EMPLEADO")
 def dashboard(request):
     return render(request, "moc_beauty/dashboard.html")
-
-
-def register(request):
-    if request.user.is_authenticated:
-        return redirect("moc_beauty:join")
-
-    if request.method == "POST":
-        form = MBRegisterForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-
-            role = MBRole.objects.get(code="CLIENTE")
-            MBMembership.objects.get_or_create(
-                user=user,
-                role=role,
-                defaults={"active": True},
-            )
-
-            login(request, user)
-            return redirect("moc_beauty:public_home")
-    else:
-        form = MBRegisterForm()
-
-    return render(request, "moc_beauty/register.html", {"form": form})
 
 
 @login_required

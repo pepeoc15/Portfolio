@@ -20,13 +20,13 @@
     </div>
 
     {% if request.user.is_authenticated %}
-  <a class="client-area" href="{% url 'moc_beauty:pedir_cita' %}">
-    Área clientes
-  </a>
+  <a class="client-area" href="{% url 'moc_beauty:pedir_cita' %}">Área clientes</a>
+  <form method="post" action="{% url 'p_auth:app_logout' 'moc_beauty' %}">
+  {% csrf_token %}
+  <button type="submit">Salir</button>
+</form>
 {% else %}
-  <a class="client-area" href="{% url 'p_auth:app_login' 'moc_beauty' %}">
-    Área clientes
-  </a>
+  <a class="client-area" href="{% url 'p_auth:app_login' 'moc_beauty' %}">Área clientes</a>
 {% endif %}
 
   </div>

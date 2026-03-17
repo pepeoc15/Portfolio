@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5" style="max-width: 520px;">
+  <h2 class="mb-4">Crear cuenta</h2>
+
+  {% if app_label %}
+    <p class="text-muted">Alta en {{ app_label }}</p>
+  {% endif %}
+
+  <form method="post" novalidate>
+    {% csrf_token %}
+
+    <div class="mb-3">
+      <label class="form-label" for="{{ form.username.id_for_label }}">Usuario</label>
+      {{ form.username }}
+      {{ form.username.errors }}
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="{{ form.email.id_for_label }}">Email</label>
+      {{ form.email }}
+      {{ form.email.errors }}
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="{{ form.nif.id_for_label }}">NIF</label>
+      {{ form.nif }}
+      {{ form.nif.errors }}
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="{{ form.tlf.id_for_label }}">Teléfono</label>
+      {{ form.tlf }}
+      {{ form.tlf.errors }}
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="{{ form.password1.id_for_label }}">Contraseña</label>
+      {{ form.password1 }}
+      {{ form.password1.errors }}
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="{{ form.password2.id_for_label }}">Repite la contraseña</label>
+      {{ form.password2 }}
+      {{ form.password2.errors }}
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Crear cuenta</button>
+  </form>
+
+  <hr class="my-4">
+
+  {% if app_key %}
+    <p class="text-center mb-0">
+      ¿Ya tienes cuenta?
+      <a href="{% url 'p_auth:app_login' app_key %}">Inicia sesión</a>
+    </p>
+  {% else %}
+    <p class="text-center mb-0">
+      ¿Ya tienes cuenta?
+      <a href="{% url 'p_auth:login' %}">Inicia sesión</a>
+    </p>
+  {% endif %}
+</div>
+{% endblock %}

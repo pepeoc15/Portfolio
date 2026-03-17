@@ -80,15 +80,14 @@ TEMPLATES = [
     },
 ]
 
-LOGOUT_REDIRECT_URL = "/"
 
 APP_AUTH_CONFIG = {
     "moc_beauty": {
         "label": "Moc Beauty",
         "join_url_name": "moc_beauty:join",
-        "register_url_name": "moc_beauty:register",
+        "register_enabled": True,
+        "post_register_url_name": "moc_beauty:public_home",
         "logout_redirect_url_name": "moc_beauty:public_home",
-        "public_index": True,
     },
     "portfolio": {
         "label": "Portfolio",
