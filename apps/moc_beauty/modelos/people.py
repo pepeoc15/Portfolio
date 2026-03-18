@@ -7,8 +7,19 @@ from .base import TimeStampedModel
 class Client(TimeStampedModel):
     first_name = models.CharField(max_length=100, verbose_name="Nombre")
     last_name = models.CharField(max_length=150, blank=True, verbose_name="Apellidos")
-    phone = models.CharField(max_length=20, blank=True, verbose_name="Teléfono")
-    email = models.EmailField(blank=True, verbose_name="Email")
+    phone = models.CharField(
+        max_length=20,
+        blank=True,
+        null=True,
+        unique=True,
+        verbose_name="Teléfono",
+    )
+    email = models.EmailField(
+        blank=True,
+        null=True,
+        unique=True,
+        verbose_name="Email",
+    )
     birth_date = models.DateField(null=True, blank=True, verbose_name="Fecha de nacimiento")
     notes = models.TextField(blank=True, verbose_name="Observaciones")
     is_active = models.BooleanField(default=True, verbose_name="Activo")
@@ -19,8 +30,7 @@ class Client(TimeStampedModel):
         ordering = ["first_name", "last_name"]
 
     def __str__(self):
-        full_name = f"{self.first_name} {self.last_name}".strip()
-        return full_name
+        return f"{self.first_name} {self.last_name}".strip()
 
 
 class Employee(TimeStampedModel):

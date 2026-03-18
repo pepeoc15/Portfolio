@@ -3,17 +3,17 @@ from decimal import Decimal
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator
 from django.db import models
-from django.db.models.manager import RelatedManager
-
+from django.utils import timezone
 
 from .base import TimeStampedModel
 from .people import Client, Employee
 from .catalog import Product, Service
+from django.db.models.manager import RelatedManager
+
 
 
 class Sale(TimeStampedModel):
     items: RelatedManager["SaleItem"]
-
 
     STATUS_DRAFT = "draft"
     STATUS_COMPLETED = "completed"
@@ -51,7 +51,10 @@ class Sale(TimeStampedModel):
         related_name="sales",
         verbose_name="Empleado",
     )
-    sale_date = models.DateTimeField(verbose_name="Fecha de venta")
+    sale_date = models.DateTimeField(
+        default=timezone.now,
+        verbose_name="Fecha de venta",
+    )
     status = models.CharField(
         max_length=20,
         choices=STATUS_CHOICES,
@@ -80,6 +83,14 @@ class Sale(TimeStampedModel):
 
     def __str__(self):
         return f"Venta #{self.pk} - {self.sale_date:%d/%m/%Y %H:%M}"
+
+    def clean(self):
+        super().clean()
+
+        if self.status == self.STATUS_COMPLETED and not self.payment_method:
+            raise ValidationError(
+                {"payment_method": "Debe indicar la forma de pago para una venta completada."}
+            )
 
     def recalculate_total(self):
         total = sum((item.subtotal for item in self.items.all()), Decimal("0.00"))
