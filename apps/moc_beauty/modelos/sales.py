@@ -8,7 +8,7 @@ from django.utils import timezone
 from .base import TimeStampedModel
 from .people import Client, Employee
 from .catalog import Product, Service
-from django.db.models.manager import RelatedManager
+from django_stubs_ext.db.models.manager import RelatedManager
 
 
 

@@ -5,6 +5,14 @@ from .base import TimeStampedModel
 
 
 class Client(TimeStampedModel):
+    user = models.OneToOneField(
+    settings.AUTH_USER_MODEL,
+    on_delete=models.SET_NULL,
+    null=True,
+    blank=True,
+    related_name="moc_beauty_client",
+    verbose_name="Usuario",
+    )
     first_name = models.CharField(max_length=100, verbose_name="Nombre")
     last_name = models.CharField(max_length=150, blank=True, verbose_name="Apellidos")
     phone = models.CharField(
