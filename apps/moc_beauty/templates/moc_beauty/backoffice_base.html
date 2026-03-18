@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Backoffice{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'moc_beauty/css/clinic.css' %}">
+
+<section class="moc-bo">
+
+  <div class="moc-bo-layout">
+
+    <!-- SIDEBAR -->
+    {% include "moc_beauty/bo/_sidebar.html" %}
+
+    <!-- MAIN -->
+    <div class="moc-bo-main">
+
+      <!-- TOPBAR -->
+      {% include "moc_beauty/bo/_topbar.html" %}
+
+      <!-- CONTENT -->
+      <div class="moc-bo-content container-fluid py-4">
+        {% block bo_content %}{% endblock %}
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+{% endblock %}

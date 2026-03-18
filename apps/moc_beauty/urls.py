@@ -15,7 +15,15 @@ urlpatterns = [
     path("contacto/", views.contacto, name="contacto"),
 
     path("login/", views.login_redirect, name="login_redirect"),
-    path("registrarse/", views.register, name="register"),
+    path("registrarse/", views.register_redirect, name="register"),
     path("unirse/", views.join, name="join"),
     path("dashboard/", views.dashboard, name="dashboard"),
+
+    path("bo/", views.dashboard, name="dashboard"),
+    path("bo/agenda/", views.agenda, name="agenda"),
+    path("bo/clientes/", views.clientes_list, name="clientes_list"),
+    path("bo/cliente/", views.cliente_detail, name="cliente_detail"),
+    path("bo/servicios/", views.servicios_list, name="servicios_list"),
+    path("bo/empleados/", views.empleados_list, name="empleados_list"),
+    path("bo/configuracion/", views.configuracion, name="configuracion"),
 ]

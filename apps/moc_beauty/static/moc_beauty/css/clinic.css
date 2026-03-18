@@ -701,3 +701,81 @@
   background: rgba(220,53,69,.08);
   border-color: rgba(220,53,69,.22);
 }
+
+
+/* =========================
+   BACKOFFICE
+========================= */
+.moc-bo-layout{
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.moc-bo-sidebar{
+  width: 240px;
+  background: var(--moc-panel);
+  border-right: 1px solid var(--moc-border);
+  padding: 20px;
+}
+
+.moc-bo-logo{
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+.moc-bo-nav{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.moc-bo-nav a{
+  text-decoration: none;
+  color: var(--moc-muted);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.moc-bo-nav a:hover{
+  background: var(--moc-hover);
+  color: var(--moc-text);
+}
+
+/* Main */
+.moc-bo-main{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Topbar */
+.moc-bo-topbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--moc-border);
+}
+
+.moc-bo-title{
+  font-weight: 800;
+}
+
+.moc-bo-user{
+  font-size: 14px;
+}
+
+/* Content */
+.moc-bo-content{
+  flex: 1;
+}
+
+/* Cards */
+.moc-bo-card{
+  background: var(--moc-panel);
+  border: 1px solid var(--moc-border);
+  border-radius: 14px;
+  padding: 20px;
+  min-height: 120px;
+}

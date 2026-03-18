@@ -7,22 +7,6 @@ from django.urls import reverse
 
 from .forms import RegisterForm
 
-
-def onboard_user_for_app(user, app_key):
-    if app_key == "moc_beauty":
-        from apps.moc_beauty.models import MBRole, MBMembership
-
-        role = MBRole.objects.get(code="CLIENTE")
-        MBMembership.objects.get_or_create(
-            user=user,
-            role=role,
-            defaults={"active": True},
-        )
-        return
-
-    raise ValueError(f"No onboarding handler for app_key={app_key}")
-
-
 class AppLoginView(LoginView):
     template_name = "p_auth/login.html"
 
@@ -94,14 +78,11 @@ def register_view(request, app_key=None):
             login(request, user)
 
             if app_key:
-                onboard_user_for_app(user, app_key)
-
-                if app_config and app_config.get("post_register_url_name"):
-                    return redirect(app_config["post_register_url_name"])
-
                 if app_config and app_config.get("join_url_name"):
                     return redirect(app_config["join_url_name"])
-
+                if app_config and app_config.get("post_register_url_name"):
+                    return redirect(app_config["post_register_url_name"])
+                
             return redirect(settings.LOGIN_REDIRECT_URL)
     else:
         form = RegisterForm()

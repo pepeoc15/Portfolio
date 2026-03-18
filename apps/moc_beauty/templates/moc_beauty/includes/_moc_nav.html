@@ -11,7 +11,11 @@
     <a href="{% url 'moc_beauty:productos' %}">Productos</a>
     <a href="{% url 'moc_beauty:servicios' %}">Servicios</a>
 
+    {% if request.user.is_authenticated %}
     <a class="cta" href="{% url 'moc_beauty:pedir_cita' %}">Pedir cita</a>
+    {% else %}
+    <a class="cta" href="{% url 'p_auth:app_login' 'moc_beauty' %}">Pedir cita</a>
+    {% endif %}
 
     <div class="moc-icons" aria-label="Redes sociales">
       <a class="icon" href="#" aria-label="Instagram" title="Instagram">IG</a>
