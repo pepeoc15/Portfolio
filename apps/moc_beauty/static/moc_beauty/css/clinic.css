@@ -779,3 +779,52 @@
   padding: 20px;
   min-height: 120px;
 }
+
+/* BACKOFFICE NAV MODE */
+.moc-nav.bo {
+  background: var(--moc-panel);
+  border-bottom: 1px solid var(--moc-border);
+}
+
+.moc-bo-title {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* USER AREA */
+.moc-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* =========================
+   BACKOFFICE SIDEBAR ACTIVE
+========================= */
+.moc-bo-nav a{
+  display: block;
+  text-decoration: none;
+  color: var(--moc-muted);
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: background .18s ease, color .18s ease, border-color .18s ease;
+}
+
+.moc-bo-nav a:hover{
+  background: var(--moc-hover);
+  color: var(--moc-text);
+  border-color: var(--moc-border);
+}
+
+.moc-bo-nav a.active{
+  background: rgba(13,110,253,.14);
+  color: var(--moc-text);
+  border-color: rgba(13,110,253,.30);
+  font-weight: 800;
+}
+
+:root[data-bs-theme="light"] .moc-bo-nav a.active{
+  background: rgba(13,110,253,.10);
+  border-color: rgba(13,110,253,.24);
+}

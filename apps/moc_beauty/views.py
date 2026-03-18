@@ -54,11 +54,6 @@ def register_redirect(request):
     return redirect("p_auth:app_register", app_key="moc_beauty")
 
 
-@mb_role_required("ADMIN", "EMPLEADO")
-def dashboard(request):
-    return render(request, "moc_beauty/dashboard.html")
-
-
 @login_required
 def join(request):
     role = MBRole.objects.get(code="CLIENTE")
@@ -72,28 +67,52 @@ def join(request):
 # =========================
 # Backoffice
 # =========================
+@mb_role_required("ADMIN", "EMPLEADO")
+def dashboard(request):
+    context = {
+        "bo_title": "Dashboard",
+    }
+    return render(request, "moc_beauty/bo/dashboard.html",context)
 
 @mb_role_required("ADMIN", "EMPLEADO")
 def agenda(request):
-    return render(request, "moc_beauty/bo/agenda.html")
+    context = {
+        "bo_title": "Agenda",
+    }
+    return render(request, "moc_beauty/bo/agenda.html", context)
 
 @mb_role_required("ADMIN", "EMPLEADO")
 def clientes_list(request):
-    return render(request, "moc_beauty/bo/clientes_list.html")
+    context = {
+        "bo_title": "Clientes",
+    }
+    return render(request, "moc_beauty/bo/clientes_list.html", context)
 
 @mb_role_required("ADMIN", "EMPLEADO")
 def cliente_detail(request):
-    return render(request, "moc_beauty/bo/cliente_detail.html")
+    context = {
+        "bo_title": "Detalle cliente",
+    }
+    return render(request, "moc_beauty/bo/cliente_detail.html", context)
 
 @mb_role_required("ADMIN", "EMPLEADO")
 def servicios_list(request):
-    return render(request, "moc_beauty/bo/servicios_list.html")
+    context = {
+        "bo_title": "Servicios",
+    }
+    return render(request, "moc_beauty/bo/servicios_list.html", context)
 
 @mb_role_required("ADMIN", "EMPLEADO")
 def empleados_list(request):
-    return render(request, "moc_beauty/bo/empleados_list.html")
+    context = {
+        "bo_title": "Empleados",
+    }
+    return render(request, "moc_beauty/bo/empleados_list.html",context)
 
 @mb_role_required("ADMIN", "EMPLEADO")
 def configuracion(request):
-    return render(request, "moc_beauty/bo/configuracion.html")
+    context = {
+        "bo_title": "Configuración",
+    }
+    return render(request, "moc_beauty/bo/configuracion.html",context)
 

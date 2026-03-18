@@ -1,37 +1,51 @@
-{% load static %}
+<nav class="moc-nav mb-4 {% if mode == 'bo' %}bo{% endif %}" aria-label="Navegación MOC Beauty">
 
-<nav class="moc-nav mb-4" aria-label="Navegación MOC Beauty">
-  <a class="moc-logo" href="{% url 'moc_beauty:public_home' %}">
+  <a class="moc-logo" href="/moc-beauty/">
     <span class="moc-logo-mark">MOC</span>
     <span class="moc-logo-text">Beauty</span>
   </a>
 
   <div class="moc-nav-links">
-    <a href="{% url 'moc_beauty:quienes_somos' %}">Quiénes somos</a>
-    <a href="{% url 'moc_beauty:productos' %}">Productos</a>
-    <a href="{% url 'moc_beauty:servicios' %}">Servicios</a>
 
-    {% if request.user.is_authenticated %}
-    <a class="cta" href="{% url 'moc_beauty:pedir_cita' %}">Pedir cita</a>
+    {% if mode != "bo" %}
+      <!-- FRONT -->
+      <a href="{% url 'moc_beauty:quienes_somos' %}">Quiénes somos</a>
+      <a href="{% url 'moc_beauty:productos' %}">Productos</a>
+      <a href="{% url 'moc_beauty:servicios' %}">Servicios</a>
+
+      <a class="cta" href="{% url 'moc_beauty:pedir_cita' %}">
+        Pedir cita
+      </a>
+
+      <div class="moc-icons">
+        <a class="icon">IG</a>
+        <a class="icon">FB</a>
+        <a class="icon">WA</a>
+      </div>
+
     {% else %}
-    <a class="cta" href="{% url 'p_auth:app_login' 'moc_beauty' %}">Pedir cita</a>
+      <!-- BACKOFFICE -->
+      <span class="moc-bo-title">
+        {{ bo_title|default:"Backoffice" }}
+      </span>
     {% endif %}
 
-    <div class="moc-icons" aria-label="Redes sociales">
-      <a class="icon" href="#" aria-label="Instagram" title="Instagram">IG</a>
-      <a class="icon" href="#" aria-label="Facebook" title="Facebook">FB</a>
-      <a class="icon" href="#" aria-label="WhatsApp" title="WhatsApp">WA</a>
+    <!-- USUARIO (común) -->
+    <div class="moc-user">
+
+      {% if request.user.is_authenticated %}
+        <span>{{ request.user.username }}</span>
+
+        <a class="btn btn-sm btn-outline-secondary ms-2"
+           href="{% url 'p_auth:logout' %}">
+          Salir
+        </a>
+      {% else %}
+        <a href="{% url 'p_auth:login' %}">Login</a>
+      {% endif %}
+
     </div>
 
-    {% if request.user.is_authenticated %}
-  <a class="client-area" href="{% url 'moc_beauty:pedir_cita' %}">Área clientes</a>
-  <form method="post" action="{% url 'p_auth:app_logout' 'moc_beauty' %}">
-  {% csrf_token %}
-  <button type="submit">Salir</button>
-</form>
-{% else %}
-  <a class="client-area" href="{% url 'p_auth:app_login' 'moc_beauty' %}">Área clientes</a>
-{% endif %}
-
   </div>
+
 </nav>

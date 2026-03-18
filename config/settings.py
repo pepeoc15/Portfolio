@@ -48,7 +48,7 @@ INSTALLED_APPS = [
 
 AUTH_USER_MODEL = "p_auth.User"
 
-LOGIN_URL = "login"
+LOGIN_URL = "p_auth:login"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 

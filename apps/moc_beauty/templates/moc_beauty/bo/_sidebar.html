@@ -4,13 +4,42 @@
     <span>MOC Beauty</span>
   </div>
 
-  <nav class="moc-bo-nav">
-    <a href="{% url 'moc_beauty:dashboard' %}">Dashboard</a>
-    <a href="{% url 'moc_beauty:agenda' %}">Agenda</a>
-    <a href="{% url 'moc_beauty:clientes_list' %}">Clientes</a>
-    <a href="{% url 'moc_beauty:servicios_list' %}">Servicios</a>
-    <a href="{% url 'moc_beauty:empleados_list' %}">Empleados</a>
-    <a href="{% url 'moc_beauty:configuracion' %}">Configuración</a>
+  <nav class="moc-bo-nav" aria-label="Menú backoffice">
+    <a
+      href="{% url 'moc_beauty:dashboard' %}"
+      class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+      Dashboard
+    </a>
+
+    <a
+      href="{% url 'moc_beauty:agenda' %}"
+      class="{% if request.resolver_match.url_name == 'agenda' %}active{% endif %}">
+      Agenda
+    </a>
+
+    <a
+      href="{% url 'moc_beauty:clientes_list' %}"
+      class="{% if request.resolver_match.url_name == 'clientes_list' or request.resolver_match.url_name == 'cliente_detail' %}active{% endif %}">
+      Clientes
+    </a>
+
+    <a
+      href="{% url 'moc_beauty:servicios_list' %}"
+      class="{% if request.resolver_match.url_name == 'servicios_list' %}active{% endif %}">
+      Servicios
+    </a>
+
+    <a
+      href="{% url 'moc_beauty:empleados_list' %}"
+      class="{% if request.resolver_match.url_name == 'empleados_list' %}active{% endif %}">
+      Empleados
+    </a>
+
+    <a
+      href="{% url 'moc_beauty:configuracion' %}"
+      class="{% if request.resolver_match.url_name == 'configuracion' %}active{% endif %}">
+      Configuración
+    </a>
   </nav>
 
 </aside>
